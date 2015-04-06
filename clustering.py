@@ -100,12 +100,12 @@ if __name__ == '__main__':
 		print "at k = " + str(k)
 		clusterMap = updateClusters (centroidMap, queryMap)
 		centroidMap = updateCentroid (centroidMap, clusterMap, queryMap)
+		f = open('clusters' + str(k) + '.txt','w')
+		for l in range(0, 30):
+			f.write('\n cluster map for:  ' + str(l) + '\n')
+			for number in clusterMap[l]:
+				f.write(str(content[number]))
+			f.write('\n----------- \n')
+		f.close();
 
-	f = open('clusters.txt','w')
-	for l in range(0, 30):
-		f.write('\n cluster map for:  ' + str(l) + '\n')
-		for number in clusterMap[l]:
-			f.write(str(content[number]))
-		f.write('\n----------- \n')
-	f.close();
 
