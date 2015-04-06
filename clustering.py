@@ -43,7 +43,7 @@ def updateClusters (centroidMap, queries):
 			if (currentDotProduct > maxDist):
 				maxDist = currentDotProduct
 				closestCentroid = centroid
-				clusterMap[centroid].append(queryNumber)
+		clusterMap[centroid].append(queryNumber)
 	return clusterMap
 
 
