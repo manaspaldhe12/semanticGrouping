@@ -38,6 +38,8 @@ def updateClusters (centroidMap, queries):
 		closestCentroid = -1
 		for centroid in centroidMap:
 			#print "centroid is: " + str(centroid)
+			if (maxDist >= 0.999999): #almost the maximum
+				break;
 			centroidLocation = centroidMap[centroid]
 			currentDotProduct = getDotProduct(centroidLocation, query)
 			if (currentDotProduct > maxDist):
@@ -63,6 +65,11 @@ def getDotProduct (mapQuery1, mapQuery2):
 			#print "match: " + str(mapQuery1[word]) + ", " + str(mapQuery2[word])
 			numerator = numerator + mapQuery1[word]*mapQuery2[word]
 	if (length1 * length2 < 0.0001):
+		return 1.0
+	if (numerator/(length1 * length2) > 1.0):
+		print "error:  " + str(numerator/(length1 * length2))
+		print '1:  ' + str(mapQuery1) + '\n'
+		print "2:  " + str(mapQuery2) + '\n'
 		return 1.0
 	return numerator/(length1 * length2)
 
